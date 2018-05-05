@@ -90,6 +90,56 @@ public class RelayTest {
 //                .subscribeOn(Schedulers.computation())
 //                .subscribe();
 
+        publishRelay
+                .observeOn(Schedulers.newThread())
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        System.out.println("FTK observeon: onNext: " + integer + " on " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
+        publishRelay
+                .subscribeOn(Schedulers.newThread())
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        System.out.println("FTK subscribeOn: onNext: " + integer + " on " + Thread.currentThread().getName());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+
+
         Completable.fromAction(new Action() {
             @Override
             public void run() throws Exception {
@@ -97,6 +147,8 @@ public class RelayTest {
                 for (int i = 0; i < 10; i++) {
                     int sleep = new Random().nextInt(100);
 //                    createSubscribe(i, sleep);
+                    System.out.println("accepting  " + i + " on " + Thread.currentThread().getName());
+
                     publishRelay.accept(i);
 
                 }
