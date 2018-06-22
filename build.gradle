@@ -1,5 +1,5 @@
-group 'franctan.com'
-version '1.0-SNAPSHOT'
+//group 'franctan.com'
+//version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
@@ -17,7 +17,7 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
 
 
-    compile "io.reactivex.rxjava2:rxjava:2.1.2"
+    compile "io.reactivex.rxjava2:rxjava:2.1.14"
     compile "com.jakewharton.rxrelay2:rxrelay:2.0.0"
     compile "com.github.akarnokd:rxjava2-extensions:0.17.5"
 

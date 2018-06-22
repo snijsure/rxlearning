@@ -14,32 +14,32 @@ public class MaybeTest {
     public static void main(String[] args) throws InterruptedException {
         testMaybe(1);
         testMaybe(2);
-
-         Maybe
-                .fromCompletable(Completable.complete())
-                .subscribe(new MaybeObserver<Object>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Object o) {
-                        System.out.println("Maybe success");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        System.out.println("Maybe complete");
-
-                    }
-                });
-
+//
+//         Maybe
+//                .fromCompletable(Completable.complete())
+//                .subscribe(new MaybeObserver<Object>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Object o) {
+//                        System.out.println("Maybe success");
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onComplete() {
+//                        System.out.println("Maybe complete");
+//
+//                    }
+//                });
+//
 
     }
 
@@ -47,6 +47,7 @@ public class MaybeTest {
 
         Maybe.just(input)
                 .filter(integer -> (integer % 2) == 0)
+                .defaultIfEmpty(4)
                 .subscribe(new MaybeObserver<Integer>() {
                     @Override
                     public void onSubscribe(Disposable d) {
